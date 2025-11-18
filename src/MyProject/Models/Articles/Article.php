@@ -14,35 +14,48 @@ class Article
 
 {
 
-    protected $title;
-
-    protected $text;
-
-    protected $author;
 
 
+    private $id;
 
-    public function __construct(string $title, string $text, User $author)
+    private $name;
+
+    private $text;
+
+    private $authorId;
+
+    private $createdAt;
+
+
+
+    public function __set($name, $value)
 
     {
 
-        $this->title = $title;
+        $camelCaseName = $this->underscoreToCamelCase($name);
 
-        $this->text = $text;
-
-        $this->author = $author;
+        $this->$camelCaseName = $value;
     }
 
 
 
-    public function getTitle(): string
+
+
+    public function getId(): int
 
     {
 
-        return $this->title;
+        return $this->id;
     }
 
 
+
+    public function getName(): string
+
+    {
+
+        return $this->name;
+    }
 
     public function getText(): string
 
@@ -51,12 +64,16 @@ class Article
         return $this->text;
     }
 
+    public function getAuthorId(): int
+    {
+        return $this->authorId;
+    }
 
 
-    public function getAuthor(): User
+    private function underscoreToCamelCase(string $source): string
 
     {
 
-        return $this->author;
+        return lcfirst(str_replace('_', '', ucwords($source, '_')));
     }
 }
