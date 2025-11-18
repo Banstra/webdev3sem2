@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Мой блог</title>
+    <title><?= htmlspecialchars($title) ?></title>
     <link rel="stylesheet" href="/styles/styles.css">
 </head>
 

@@ -39,7 +39,7 @@ class MainController
 
         ];
 
-        $this->view->renderHtml('main/main.php', ['articles' => $articles]);
+        $this->view->renderHtml('main/main.php', ['articles' => $articles, 'title' => 'Мой блог']);
     }
 
 
@@ -48,12 +48,12 @@ class MainController
 
     {
 
-        $this->view->renderHtml('main/hello.php', ['name' => $name]);
+        $this->view->renderHtml('main/hello.php', ['name' => $name, 'title' => 'Страница приветствия']);
     }
     public function sayBye(string $name)
 
     {
 
-        $this->view->renderHtml('main/bye.php', ['name' => $name]);
+        $this->view->renderHtml('main/bye.php', ['name' => $name, 'title' => 'Страница прощания']);
     }
 }

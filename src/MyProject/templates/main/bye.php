@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Мой блог</title>
+    <title><?= htmlspecialchars($title) ?></title>
     <link rel="stylesheet" href="/styles/styles.css">
 </head>
 
@@ -12,7 +12,7 @@
     <table class="layout">
         <tr>
             <td colspan="2" class="header">
-                Мой блог
+                <?= htmlspecialchars($title) ?>
             </td>
         </tr>
         <tr>
