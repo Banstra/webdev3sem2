@@ -4,6 +4,8 @@ namespace MyProject\Models;
 
 use MyProject\Services\Db;
 
+use MyProject\Models\Comments\Comment;
+
 abstract class ActiveRecordEntity
 {
     protected $id;
@@ -173,6 +175,14 @@ abstract class ActiveRecordEntity
         return $entities ? $entities[0] : null;
     }
 
-
+    public function getComments(): array
+    {
+        $db = Db::getInstance();
+        return $db->query(
+            'SELECT * FROM comments WHERE article_id = :article_id ORDER BY created_at DESC',
+            [':article_id' => $this->id],
+            Comment::class
+        );
+    }
     abstract protected static function getTableName(): string;
 }

@@ -8,5 +8,8 @@ return [
     '~^articles/(\d+)/edit$~' => [MyProject\Controllers\ArticlesController::class, 'edit'],
     '~^$~' => [\MyProject\Controllers\MainController::class, 'main'],
     '~^articles/add$~' => [\MyProject\Controllers\ArticlesController::class, 'add'],
+    '~^articles/(\d+)/comments$~' => [MyProject\Controllers\ArticlesController::class, 'addComment'],
+    '~^comments/(\d+)/edit$~' => [MyProject\Controllers\ArticlesController::class, 'editComment'],
+
 
 ];
