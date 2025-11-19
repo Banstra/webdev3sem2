@@ -98,13 +98,20 @@ class ArticlesController
         }
 
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $article->setName($_POST['name'] ?? '');
+            $article->setText($_POST['text'] ?? '');
+            $article->save();
 
-        $article->setName('Новое название статьи');
+            header('Location: /articles/' . $articleId);
+            exit();
+        }
 
-        $article->setText('Новый текст статьи');
 
+        $this->view->renderHtml('articles/edit.php', [
 
+            'article' => $article
 
-        $article->save();
+        ]);
     }
 }
