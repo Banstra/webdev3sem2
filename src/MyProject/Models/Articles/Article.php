@@ -41,8 +41,13 @@ class Article extends ActiveRecordEntity
         $this->text = $text;
     }
 
+    public function setAuthor(User $author): void
 
-    // Ленивое получение автора статьи
+    {
+
+        $this->authorId = $author->getId();
+    }
+
     public function getAuthor(): User
     {
         return User::getById($this->authorId);
