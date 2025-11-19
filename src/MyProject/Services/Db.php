@@ -13,29 +13,28 @@ class Db
     /** @var \PDO */
 
     private $pdo;
+    private static ?self $instance = null;
 
 
-
-    public function __construct()
-
+    private function __construct()
     {
-
         $dbOptions = (require __DIR__ . '/../../settings.php')['db'];
 
-
-
         $this->pdo = new \PDO(
-
             'mysql:host=' . $dbOptions['host'] . ';dbname=' . $dbOptions['dbname'],
-
             $dbOptions['user'],
-
             $dbOptions['password']
-
         );
-
         $this->pdo->exec('SET NAMES UTF8');
     }
+    public static function getInstance(): self
+    {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
 
 
 
