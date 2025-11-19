@@ -31,6 +31,16 @@ class Article extends ActiveRecordEntity
     {
         return 'articles';
     }
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function setText(string $text): void
+    {
+        $this->text = $text;
+    }
+
 
     // Ленивое получение автора статьи
     public function getAuthor(): User
